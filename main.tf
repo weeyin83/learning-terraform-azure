@@ -1,11 +1,18 @@
 # Set the Azure Provider source and version being used
 terraform {
-  required_version = ">= 1.1.0"
-
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = "~> 3.37.0"
+    }
+  }
+  required_version = "1.3.6"
+
+  cloud {
+    organization = "Slate-Rock"
+
+    workspaces {
+      name = "learning-terraform-azure"
     }
   }
 }
@@ -106,7 +113,7 @@ resource "azurerm_linux_virtual_machine" "tfexample" {
   location                        = azurerm_resource_group.tfexample.location
   resource_group_name             = azurerm_resource_group.tfexample.name
   network_interface_ids           = [azurerm_network_interface.tfexample.id]
-  size                            = "Standard_DS1_v2"
+  size                            = "Standard_D4s_v3"
   computer_name                   = "myvm"
   admin_username                  = "azureuser"
   admin_password                  = "Password1234!"
@@ -115,7 +122,7 @@ resource "azurerm_linux_virtual_machine" "tfexample" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
+    sku       = "22.04-LTS"
     version   = "latest"
   }
 
