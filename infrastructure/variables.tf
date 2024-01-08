@@ -9,12 +9,12 @@ variable "location" {
 
 variable "naming_prefix" {
   type    = string
-  default = "speakinglog"
+  default = "envdemospeakinglog"
 }
 
 variable "tag_usage" {
   type    = string
-  default = "speaking"
+  default = "envdemospeaking"
 }
 
 variable "tag_owner" {
